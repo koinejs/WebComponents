@@ -5,13 +5,13 @@ Components for web
 
 Code information:
 
-[![Build Status](https://travis-ci.org/koinejs/Components.png?branch=master)](https://travis-ci.org/koinejs/Components)
-[![Coverage Status](https://coveralls.io/repos/koinejs/Components/badge.png?branch=master)](https://coveralls.io/r/koinejs/Components?branch=master)
-[![Code Climate](https://codeclimate.com/github/koinejs/Components.png)](https://codeclimate.com/github/koinejs/Components)
+[![Build Status](https://travis-ci.org/koinejs/WebComponents.png?branch=master)](https://travis-ci.org/koinejs/WebComponents)
+[![Coverage Status](https://coveralls.io/repos/koinejs/WebComponents/badge.png?branch=master)](https://coveralls.io/r/koinejs/WebComponents?branch=master)
+[![Code Climate](https://codeclimate.com/github/koinejs/WebComponents.png)](https://codeclimate.com/github/koinejs/WebComponents)
 
 Package information:
 
-[![Dependency Status](https://gemnasium.com/koinejs/Components.png)](https://gemnasium.com/koinejs/Components)
+[![Dependency Status](https://gemnasium.com/koinejs/WebComponents.png)](https://gemnasium.com/koinejs/WebComponents)
 
 
 ### Usage
@@ -26,11 +26,11 @@ Package information:
 
 ### Issues/Features proposals
 
-[Here](https://github.com/koinejs/Components/issues) is the issue tracker.
+[Here](https://github.com/koinejs/WebComponents/issues) is the issue tracker.
 
 ## Contributing
 
-Please refer to the [contribuiting guide](https://github.com/koinejs/Components/blob/master/CONTRIBUTING.md).
+Please refer to the [contribuiting guide](https://github.com/koinejs/WebComponents/blob/master/CONTRIBUTING.md).
 
 ### Lincense
 [MIT](MIT-LICENSE)
