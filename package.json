@@ -8,9 +8,9 @@
     "email" : "marcelo.jacobus@gmail.com"
   },
   "tags": [
-    "decorators",
-  "dom"
-    ],
+    "dom",
+    "components"
+  ],
   "dependencies": {
     "jquery":">=1.0",
     "koine-publisher":"~0.9.2",
