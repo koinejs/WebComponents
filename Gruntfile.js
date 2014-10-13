@@ -12,13 +12,15 @@ module.exports = function (grunt) {
     jasmine: {
       components: {
         src: [
+          'node_modules/jquery/dist/jquery.js',
           'node_modules/koine-publisher/src/*js',
+          'node_modules/koine-decorators-dom/src/*js',
           'src/*js'
         ],
         options: {
           specs: 'specs/*_spec.js',
           keepRunner : true,
-          display : 'short',
+          // display : 'short',
           summary : true,
           helpers: 'specs/helpers/*.js'
         }
