@@ -4,6 +4,7 @@ var exports = exports || undefined;
   "use strinct";
 
   var FancySelect = function (source, destination, container, $) {
+    var self = this;
     this.source      = source;
     this.destination = destination;
     this.$ = $;
@@ -11,6 +12,11 @@ var exports = exports || undefined;
 
     container.on('click', '.option', function () {
       $(this).toggleClass('selected');
+    });
+
+    container.on('click', '[data-add-selected]', function (e) {
+      e.preventDefault();
+      self.transferSelected(source, destination, container.find('.source .option.selected'));
     });
   };
 
@@ -29,6 +35,27 @@ var exports = exports || undefined;
 
     getContainer: function () {
       return this.container;
+    },
+
+    transferSelected: function (origin, destination, selected) {
+      var values = [], options = [];
+
+      selected.each(function () {
+        values.push($(this).data('value'));
+      });
+
+      values.forEach(function (value) {
+        origin.getOptions().forEach(function (option) {
+          if (value == option.getValue()) {
+            options.push(option);
+          }
+        });
+      });
+
+      origin.removeOptions(options);
+      destination.addOptions(options);
+
+      // this.render();
     },
 
     render: function () {
