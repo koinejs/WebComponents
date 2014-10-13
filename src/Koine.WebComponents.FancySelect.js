@@ -8,6 +8,10 @@ var exports = exports || undefined;
     this.destination = destination;
     this.$ = $;
     this.setContainer(container);
+
+    container.on('click', '.option', function () {
+      $(this).toggleClass('selected');
+    });
   };
 
   FancySelect.prototype = {
@@ -34,9 +38,11 @@ var exports = exports || undefined;
 
       var html = this.template(
         [
-          '<div class="fancy_select source">{{sourceOptions}}</div>',
+          '<div class="fancy-select">',
+          '<div class="source">{{sourceOptions}}</div>',
           '{{buttons}}',
-          '<div class="fancy_select destination">{{destinationOptions}}</div>'
+          '<div class="destination">{{destinationOptions}}</div>',
+          '</div>'
         ].join(''),
         {
           sourceOptions: sourceOptions,
@@ -64,10 +70,12 @@ var exports = exports || undefined;
 
     _getButtonsHtml: function () {
       return [
+        '<div class="actions">',
         '<a href="#" data-add-all>&gt;&gt;</a>',
         '<a href="#" data-add-selected>&gt;</a>',
         '<a href="#" data-remove-selected>&lt;</a>',
         '<a href="#" data-remove-all>&lt;&lt;</a>',
+        '</div>'
       ].join('');
     },
 

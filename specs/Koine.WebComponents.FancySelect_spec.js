@@ -1,6 +1,19 @@
 describe("Koine.WebComponents.FancySelect", function () {
   var subject, source, destination, sourceElement, destinationElement, container;
 
+  var initialize = function () {
+      source.addOptions([
+        source.createOption('1', 'one'),
+        source.createOption('2', 'two')
+      ]);
+
+      destination.addOptions([
+        source.createOption('3', 'three')
+      ]);
+
+      subject.render();
+  };
+
   beforeEach(function () {
     container = $('<div  id="container" />');
     sourceElement = document.createElement('select');
@@ -33,21 +46,10 @@ describe("Koine.WebComponents.FancySelect", function () {
   });
 
   describe("#render", function () {
-    beforeEach(function () {
-      source.addOptions([
-        source.createOption('1', 'one'),
-        source.createOption('2', 'two')
-      ]);
-
-      destination.addOptions([
-        source.createOption('3', 'three')
-      ]);
-
-      subject.render();
-    });
+    beforeEach(initialize);
 
     it("adds source items to the container", function () {
-      var sourceContainer = container.find('.fancy_select.source');
+      var sourceContainer = container.find('.fancy-select .source');
       expect(sourceContainer.length).toEqual(1);
       expect(sourceContainer.find('.option').length).toEqual(2);
 
@@ -62,7 +64,7 @@ describe("Koine.WebComponents.FancySelect", function () {
     });
 
     it("adds destination items to the container", function () {
-      var sourceContainer = container.find('.fancy_select.destination');
+      var sourceContainer = container.find('.fancy-select .destination');
       expect(sourceContainer.length).toEqual(1);
       expect(sourceContainer.find('.option').length).toEqual(1);
 
@@ -73,11 +75,37 @@ describe("Koine.WebComponents.FancySelect", function () {
     });
 
     it("renders action buttons", function () {
+      container = container.find('.actions');
       expect(container.find('a[data-add-selected]').length).toEqual(1);
       expect(container.find('a[data-add-all]').length).toEqual(1);
       expect(container.find('a[data-remove-selected]').length).toEqual(1);
       expect(container.find('a[data-remove-all]').length).toEqual(1);
     });
   });
+
+  describe("option.click()", function () {
+    var sourceOption, destinationOption;
+
+    beforeEach(function () {
+      initialize();
+      sourceOption      = container.find('.source .option:first');
+      destinationOption = container.find('.destination .option:first');
+
+      sourceOption.click();
+      destinationOption.click();
+    });
+
+    it("toggles class of div", function () {
+      expect(sourceOption.hasClass('selected')).toBeTruthy();
+      expect(destinationOption.hasClass('selected')).toBeTruthy();
+
+      destinationOption.click();
+      sourceOption.click();
+
+      expect(sourceOption.hasClass('selected')).toBeFalsy();
+      expect(destinationOption.hasClass('selected')).toBeFalsy();
+    });
+  });
+
 });
 

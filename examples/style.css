@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.example-box {
+  padding: 20px;
+  margin: 20px;
+  float: left;
+  border: 4px solid #eee;
+}
