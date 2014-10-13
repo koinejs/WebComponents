@@ -30,7 +30,7 @@ describe("Koine.WebComponents.FancySelect", function () {
       destination,
       container,
       jQuery
-    )
+    );
   });
 
   it("initializes with a source decorator", function () {
