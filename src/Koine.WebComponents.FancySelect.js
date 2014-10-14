@@ -3,38 +3,37 @@ var exports = exports || undefined;
 (function (Koine) {
   "use strinct";
 
-  var FancySelect = function ($source, $destination, container, $) {
+  var FancySelect = function ($source, $destination, $container, $) {
     var self, source, destination;
     this.source      = new Koine.Decorators.Dom.SelectDecorator($source[0]);
     this.destination = new Koine.Decorators.Dom.SelectDecorator($destination[0]);
-    this.$           = $;
     source           = this.getSource();
     destination      = this.getDestination();
     self             = this;
-    this.setContainer(container);
+    this.setContainer($container);
 
-    container.on('click', '.option', function () {
+    $container.on('click', '.option', function () {
       $(this).toggleClass('selected');
     });
 
-    container.on('click', '[data-add-selected]', function (e) {
+    $container.on('click', '[data-add-selected]', function (e) {
       e.preventDefault();
-      self.transferSelected(source, destination, container.find('.source .option.selected'));
+      self.transferSelected(source, destination, $container.find('.source .option.selected'));
     });
 
-    container.on('click', '[data-add-all]', function (e) {
+    $container.on('click', '[data-add-all]', function (e) {
       e.preventDefault();
-      self.transferSelected(source, destination, container.find('.source .option'));
+      self.transferSelected(source, destination, $container.find('.source .option'));
     });
 
-    container.on('click', '[data-remove-selected]', function (e) {
+    $container.on('click', '[data-remove-selected]', function (e) {
       e.preventDefault();
-      self.transferSelected(destination, source, container.find('.destination .option.selected'));
+      self.transferSelected(destination, source, $container.find('.destination .option.selected'));
     });
 
-    container.on('click', '[data-remove-all]', function (e) {
+    $container.on('click', '[data-remove-all]', function (e) {
       e.preventDefault();
-      self.transferSelected(destination, source, container.find('.destination .option'));
+      self.transferSelected(destination, source, $container.find('.destination .option'));
     });
 
   };

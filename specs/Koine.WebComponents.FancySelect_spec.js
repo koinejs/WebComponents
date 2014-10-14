@@ -29,12 +29,12 @@ describe("Koine.WebComponents.FancySelect", function () {
     sourceElement      = $source[0];
     destinationElement = $('#destination')[0];
 
-    container = $('#container');
+    $container = $('#container');
 
     subject = new Koine.WebComponents.FancySelect(
       $source,
       $destination,
-      container,
+      $container,
       jQuery
     );
 
@@ -58,7 +58,7 @@ describe("Koine.WebComponents.FancySelect", function () {
     beforeEach(initialize);
 
     it("adds source items to the container", function () {
-      var sourceContainer = container.find('.fancy-select .source');
+      var sourceContainer = $container.find('.fancy-select .source');
       expect(sourceContainer.length).toEqual(1);
       expect(sourceContainer.find('.option').length).toEqual(2);
 
@@ -73,7 +73,7 @@ describe("Koine.WebComponents.FancySelect", function () {
     });
 
     it("adds destination items to the container", function () {
-      var sourceContainer = container.find('.fancy-select .destination');
+      var sourceContainer = $container.find('.fancy-select .destination');
       expect(sourceContainer.length).toEqual(1);
       expect(sourceContainer.find('.option').length).toEqual(2);
 
@@ -84,11 +84,11 @@ describe("Koine.WebComponents.FancySelect", function () {
     });
 
     it("renders action buttons", function () {
-      container = container.find('.actions');
-      expect(container.find('a[data-add-selected]').length).toEqual(1);
-      expect(container.find('a[data-add-all]').length).toEqual(1);
-      expect(container.find('a[data-remove-selected]').length).toEqual(1);
-      expect(container.find('a[data-remove-all]').length).toEqual(1);
+      $container = $container.find('.actions');
+      expect($container.find('a[data-add-selected]').length).toEqual(1);
+      expect($container.find('a[data-add-all]').length).toEqual(1);
+      expect($container.find('a[data-remove-selected]').length).toEqual(1);
+      expect($container.find('a[data-remove-all]').length).toEqual(1);
     });
   });
 
@@ -97,8 +97,8 @@ describe("Koine.WebComponents.FancySelect", function () {
 
     beforeEach(function () {
       initialize();
-      sourceOption      = container.find('.source .option:first');
-      destinationOption = container.find('.destination .option:first');
+      sourceOption      = $container.find('.source .option:first');
+      destinationOption = $container.find('.destination .option:first');
 
       sourceOption.click();
       destinationOption.click();
@@ -121,9 +121,9 @@ describe("Koine.WebComponents.FancySelect", function () {
 
     beforeEach(function () {
       initialize();
-      option = container.find('.source .option:last');
+      option = $container.find('.source .option:last');
       option.addClass('selected');
-      container.find('[data-add-selected]').click();
+      $container.find('[data-add-selected]').click();
     });
 
     it("transfers option from source to destination", function () {
@@ -132,15 +132,15 @@ describe("Koine.WebComponents.FancySelect", function () {
     });
 
     it("re-renders the compoment", function () {
-      expect(container.find('.source .option').length).toEqual(1);
-      expect(container.find('.destination .option').length).toEqual(3);
+      expect($container.find('.source .option').length).toEqual(1);
+      expect($container.find('.destination .option').length).toEqual(3);
     });
   });
 
   describe("[data-add-all].click()", function () {
     beforeEach(function () {
       initialize();
-      container.find('[data-add-all]').click();
+      $container.find('[data-add-all]').click();
     });
 
     it("transfers option from source to destination", function () {
@@ -149,8 +149,8 @@ describe("Koine.WebComponents.FancySelect", function () {
     });
 
     it("re-renders the compoment", function () {
-      expect(container.find('.source .option').length).toEqual(0);
-      expect(container.find('.destination .option').length).toEqual(4);
+      expect($container.find('.source .option').length).toEqual(0);
+      expect($container.find('.destination .option').length).toEqual(4);
     });
   });
 
@@ -159,9 +159,9 @@ describe("Koine.WebComponents.FancySelect", function () {
 
     beforeEach(function () {
       initialize();
-      option = container.find('.destination .option:last');
+      option = $container.find('.destination .option:last');
       option.addClass('selected');
-      container.find('[data-remove-selected]').click();
+      $container.find('[data-remove-selected]').click();
     });
 
     it("transfers option from destination to source", function () {
@@ -170,15 +170,15 @@ describe("Koine.WebComponents.FancySelect", function () {
     });
 
     it("re-renders the compoment", function () {
-      expect(container.find('.source .option').length).toEqual(3);
-      expect(container.find('.destination .option').length).toEqual(1);
+      expect($container.find('.source .option').length).toEqual(3);
+      expect($container.find('.destination .option').length).toEqual(1);
     });
   });
 
   describe("[data-remove-all].click()", function () {
     beforeEach(function () {
       initialize();
-      container.find('[data-remove-all]').click();
+      $container.find('[data-remove-all]').click();
     });
 
     it("transfers option from source to destination", function () {
@@ -187,9 +187,8 @@ describe("Koine.WebComponents.FancySelect", function () {
     });
 
     it("re-renders the compoment", function () {
-      expect(container.find('.source .option').length).toEqual(4);
-      expect(container.find('.destination .option').length).toEqual(0);
+      expect($container.find('.source .option').length).toEqual(4);
+      expect($container.find('.destination .option').length).toEqual(0);
     });
   });
 });
-
