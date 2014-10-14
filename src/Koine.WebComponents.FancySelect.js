@@ -19,10 +19,21 @@ var exports = exports || undefined;
       self.transferSelected(source, destination, container.find('.source .option.selected'));
     });
 
+    container.on('click', '[data-add-all]', function (e) {
+      e.preventDefault();
+      self.transferSelected(source, destination, container.find('.source .option'));
+    });
+
     container.on('click', '[data-remove-selected]', function (e) {
       e.preventDefault();
       self.transferSelected(destination, source, container.find('.destination .option.selected'));
     });
+
+    container.on('click', '[data-remove-all]', function (e) {
+      e.preventDefault();
+      self.transferSelected(destination, source, container.find('.destination .option'));
+    });
+
   };
 
   FancySelect.prototype = {

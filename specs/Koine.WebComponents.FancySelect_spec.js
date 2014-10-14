@@ -133,6 +133,23 @@ describe("Koine.WebComponents.FancySelect", function () {
     });
   });
 
+  describe("[data-add-all].click()", function () {
+    beforeEach(function () {
+      initialize();
+      container.find('[data-add-all]').click();
+    });
+
+    it("transfers option from source to destination", function () {
+      expect(source.getOptions().length).toEqual(0);
+      expect(destination.getOptions().length).toEqual(4);
+    });
+
+    it("re-renders the compoment", function () {
+      expect(container.find('.source .option').length).toEqual(0);
+      expect(container.find('.destination .option').length).toEqual(4);
+    });
+  });
+
   describe("[data-remove-selected].click()", function () {
     var option;
 
@@ -151,6 +168,23 @@ describe("Koine.WebComponents.FancySelect", function () {
     it("re-renders the compoment", function () {
       expect(container.find('.source .option').length).toEqual(3);
       expect(container.find('.destination .option').length).toEqual(1);
+    });
+  });
+
+  describe("[data-remove-all].click()", function () {
+    beforeEach(function () {
+      initialize();
+      container.find('[data-remove-all]').click();
+    });
+
+    it("transfers option from source to destination", function () {
+      expect(source.getOptions().length).toEqual(4);
+      expect(destination.getOptions().length).toEqual(0);
+    });
+
+    it("re-renders the compoment", function () {
+      expect(container.find('.source .option').length).toEqual(4);
+      expect(container.find('.destination .option').length).toEqual(0);
     });
   });
 });
