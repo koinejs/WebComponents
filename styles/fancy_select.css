@@ -1,15 +1,17 @@
 .fancy-select .source,
 .fancy-select .destination {
-  float: left;
   border: 1px solid #ddd;
+  float: left;
   height: 200px;
   min-width: 100px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .fancy-select .option {
   border: 1px solid #eee;
-  padding: 5px;
   cursor: pointer;
+  padding: 5px;
 }
 
 .fancy-select .option.selected {
