@@ -12,6 +12,14 @@ var exports = exports || undefined;
     self             = this;
     this.setContainer($container);
 
+    source.on('options:added, options:removed', function () {
+      self.render();
+    });
+
+    destination.on('options:added, options:removed', function () {
+      self.render();
+    });
+
     $container.on('click', '.option', function () {
       $(this).toggleClass('selected');
     });

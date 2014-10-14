@@ -193,4 +193,36 @@ describe("Koine.WebComponents.FancySelect", function () {
       expect($container.find('.destination .option').length).toEqual(0);
     });
   });
+
+  it("rerenders when an option is removed to source", function () {
+    var option = source.createOption('foo', 'bar');
+    source.addOption(option);
+
+    var method = spyOn(subject, 'render');
+    source.removeOption(option);
+    expect(method).toHaveBeenCalled();
+  });
+
+  it("rerenders when an option is added to source", function () {
+    var method = spyOn(subject, 'render');
+    var option = source.createOption('foo', 'bar');
+    source.addOption(option);
+    expect(method).toHaveBeenCalled();
+  });
+
+  it("rerenders when an option is removed to destination", function () {
+    var option = destination.createOption('foo', 'bar');
+    destination.addOption(option);
+
+    var method = spyOn(subject, 'render');
+    destination.removeOption(option);
+    expect(method).toHaveBeenCalled();
+  });
+
+  it("rerenders when an option is added to destination", function () {
+    var method = spyOn(subject, 'render');
+    var option = destination.createOption('foo', 'bar');
+    destination.addOption(option);
+    expect(method).toHaveBeenCalled();
+  });
 });
