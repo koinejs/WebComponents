@@ -20,30 +20,34 @@ describe("Koine.WebComponents.FancySelect", function () {
   });
 
   beforeEach(function () {
-    container = $('<div  id="container" />');
-    sourceElement = document.createElement('select');
-    destinationElement = document.createElement('select');
+    var html = '<div id="container"><select id="source"></select><select id="destination"></select></div>';
 
-    $('body').append(container).append(sourceElement).append(destinationElement);
+    $('body').append(html);
+
+    $source            = $('#source');
+    $destination       = $('#destination');
+    sourceElement      = $source[0];
+    destinationElement = $('#destination')[0];
+
     container = $('#container');
 
-    source      = new Koine.Decorators.Dom.SelectDecorator(sourceElement);
-    destination = new Koine.Decorators.Dom.SelectDecorator(destinationElement);
-
     subject = new Koine.WebComponents.FancySelect(
-      source,
-      destination,
+      $source,
+      $destination,
       container,
       jQuery
     );
+
+    source      = subject.getSource();
+    destination = subject.getDestination();
   });
 
   it("initializes with a source decorator", function () {
-    expect(subject.getSource()).toBe(source);
+    expect(subject.getSource() instanceof Koine.Decorators.Dom.SelectDecorator).toBeTruthy();
   });
 
   it("initializes with a destination select decorator", function () {
-    expect(subject.getDestination()).toBe(destination);
+    expect(subject.getDestination() instanceof Koine.Decorators.Dom.SelectDecorator).toBeTruthy();
   });
 
   it("initializes with a container", function () {

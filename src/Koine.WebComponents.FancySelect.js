@@ -3,11 +3,14 @@ var exports = exports || undefined;
 (function (Koine) {
   "use strinct";
 
-  var FancySelect = function (source, destination, container, $) {
-    var self = this;
-    this.source      = source;
-    this.destination = destination;
-    this.$ = $;
+  var FancySelect = function ($source, $destination, container, $) {
+    var self, source, destination;
+    this.source      = new Koine.Decorators.Dom.SelectDecorator($source[0]);
+    this.destination = new Koine.Decorators.Dom.SelectDecorator($destination[0]);
+    this.$           = $;
+    source           = this.getSource();
+    destination      = this.getDestination();
+    self             = this;
     this.setContainer(container);
 
     container.on('click', '.option', function () {
