@@ -2,17 +2,17 @@ describe("Koine.WebComponents.FancySelect", function () {
   var subject, source, destination, sourceElement, destinationElement, container;
 
   var initialize = function () {
-      source.addOptions([
-        source.createOption('1', 'one'),
-        source.createOption('2', 'two')
-      ]);
+    source.addOptions([
+      source.createOption('1', 'one'),
+      source.createOption('2', 'two')
+    ]);
 
-      destination.addOptions([
-        source.createOption('3', 'three'),
-        source.createOption('4', 'four'),
-      ]);
+    destination.addOptions([
+      source.createOption('3', 'three'),
+      source.createOption('4', 'four'),
+    ]);
 
-      subject.render();
+    subject.render();
   };
 
   afterEach(function() {
