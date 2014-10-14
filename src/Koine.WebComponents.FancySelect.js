@@ -55,7 +55,7 @@ var exports = exports || undefined;
       origin.removeOptions(options);
       destination.addOptions(options);
 
-      // this.render();
+      this.render();
     },
 
     render: function () {

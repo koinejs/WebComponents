@@ -14,6 +14,10 @@ describe("Koine.WebComponents.FancySelect", function () {
       subject.render();
   };
 
+  afterEach(function() {
+    $('#container').remove();
+  });
+
   beforeEach(function () {
     container = $('<div  id="container" />');
     sourceElement = document.createElement('select');
