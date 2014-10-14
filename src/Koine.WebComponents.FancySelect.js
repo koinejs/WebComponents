@@ -18,6 +18,11 @@ var exports = exports || undefined;
       e.preventDefault();
       self.transferSelected(source, destination, container.find('.source .option.selected'));
     });
+
+    container.on('click', '[data-remove-selected]', function (e) {
+      e.preventDefault();
+      self.transferSelected(destination, source, container.find('.destination .option.selected'));
+    });
   };
 
   FancySelect.prototype = {

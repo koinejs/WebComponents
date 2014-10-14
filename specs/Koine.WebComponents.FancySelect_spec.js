@@ -132,5 +132,26 @@ describe("Koine.WebComponents.FancySelect", function () {
       expect(container.find('.destination .option').length).toEqual(3);
     });
   });
+
+  describe("[data-remove-selected].click()", function () {
+    var option;
+
+    beforeEach(function () {
+      initialize();
+      option = container.find('.destination .option:last');
+      option.addClass('selected');
+      container.find('[data-remove-selected]').click();
+    });
+
+    it("transfers option from destination to source", function () {
+      expect(source.getOptions().length).toEqual(3);
+      expect(destination.getOptions().length).toEqual(1);
+    });
+
+    it("re-renders the compoment", function () {
+      expect(container.find('.source .option').length).toEqual(3);
+      expect(container.find('.destination .option').length).toEqual(1);
+    });
+  });
 });
 
