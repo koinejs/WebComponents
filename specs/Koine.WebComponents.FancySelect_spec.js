@@ -20,15 +20,17 @@ describe("Koine.WebComponents.FancySelect", function () {
   });
 
   beforeEach(function () {
-    var html = '<div id="container"><select id="source"></select><select id="destination"></select></div>';
+    var html = [
+      '<div id="container">',
+      '<select id="source"></select>',
+      '<select id="destination"></select>',
+      '</div>'
+    ].join('');
 
     $('body').append(html);
 
     $source            = $('#source');
     $destination       = $('#destination');
-    sourceElement      = $source[0];
-    destinationElement = $('#destination')[0];
-
     $container = $('#container');
 
     subject = new Koine.WebComponents.FancySelect(
