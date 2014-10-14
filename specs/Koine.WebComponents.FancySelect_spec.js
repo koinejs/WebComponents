@@ -8,7 +8,8 @@ describe("Koine.WebComponents.FancySelect", function () {
       ]);
 
       destination.addOptions([
-        source.createOption('3', 'three')
+        source.createOption('3', 'three'),
+        source.createOption('4', 'four'),
       ]);
 
       subject.render();
@@ -70,7 +71,7 @@ describe("Koine.WebComponents.FancySelect", function () {
     it("adds destination items to the container", function () {
       var sourceContainer = container.find('.fancy-select .destination');
       expect(sourceContainer.length).toEqual(1);
-      expect(sourceContainer.find('.option').length).toEqual(1);
+      expect(sourceContainer.find('.option').length).toEqual(2);
 
       var first = sourceContainer.find('.option:first');
 
@@ -123,12 +124,12 @@ describe("Koine.WebComponents.FancySelect", function () {
 
     it("transfers option from source to destination", function () {
       expect(source.getOptions().length).toEqual(1);
-      expect(destination.getOptions().length).toEqual(2);
+      expect(destination.getOptions().length).toEqual(3);
     });
 
     it("re-renders the compoment", function () {
       expect(container.find('.source .option').length).toEqual(1);
-      expect(container.find('.destination .option').length).toEqual(2);
+      expect(container.find('.destination .option').length).toEqual(3);
     });
   });
 });
