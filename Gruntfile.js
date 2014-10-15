@@ -25,9 +25,19 @@ module.exports = function (grunt) {
           helpers: 'specs/helpers/*.js'
         }
       }
+    },
+    uglify: {
+      minify: {
+        files: {
+          'dist/Koine.WebComponents.min.js': [
+            'src/*',
+          ]
+        }
+      }
     }
   });
 
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-usemin');
@@ -42,6 +52,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('travis', [
     'jasmine',
-    'jshint'
+    'jshint',
+    'uglify'
   ]);
 };
