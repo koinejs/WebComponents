@@ -12,11 +12,10 @@
     "components"
   ],
   "dependencies": {
-    "jquery":">=1.0",
-    "koine-publisher":"~0.9.2",
-    "koine-decorators-dom" : "~0.9.1"
+    "koine-decorators-dom" : "~0.9.2"
   },
   "devDependencies": {
+    "jquery":">=1.0",
     "jasmine": "~2.*",
     "grunt": "*",
     "grunt-contrib-uglify": "*",

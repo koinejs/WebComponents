@@ -13,14 +13,13 @@ module.exports = function (grunt) {
       components: {
         src: [
           'node_modules/jquery/dist/jquery.js',
-          'node_modules/koine-publisher/src/*js',
-          'node_modules/koine-decorators-dom/src/*js',
+          'node_modules/koine-decorators-dom/dist/Koine.Decorators.with-dependencies.min.js',
           'src/*js'
         ],
         options: {
           specs: 'specs/*_spec.js',
           keepRunner : true,
-          // display : 'short',
+          display : 'short',
           summary : true,
           helpers: 'specs/helpers/*.js'
         }
@@ -30,6 +29,14 @@ module.exports = function (grunt) {
       minify: {
         files: {
           'dist/Koine.WebComponents.min.js': [
+            'src/*',
+          ]
+        }
+      },
+      withDependencies: {
+        files: {
+          'dist/Koine.WebComponents.with-dependencies.min.js': [
+            'node_modules/koine-decorators-dom/dist/Koine.Decorators.with-dependencies.min.js',
             'src/*',
           ]
         }
