@@ -4,11 +4,17 @@ var exports = exports || undefined;
   "use strinct";
 
   /**
-   * Fancy Select
-   * @param jQuery $source Jquery object for the source select
-   * @param jQuery $destination Jquery object for the destination select
-   * @param function the jquery function
-   *  fancy select must be rendered
+   * Double Select
+   * @param object options
+   *  Available options:
+   *    source:       the source select jQuery object
+   *    destination:  the destination select jQuery object
+   *    jquery:       Optional. the jquery function
+   *    controls:     object
+   *      addAll: the button to add all options to the destination select
+   *      removeAll: the button to add all destination options back to the source select
+   *      addSelected: transfers selected options from source to destination
+   *      removSelected: transfers selected options from destination to source
    */
   var DoubleSelect = function (options) {
     this.source      = options.source;
