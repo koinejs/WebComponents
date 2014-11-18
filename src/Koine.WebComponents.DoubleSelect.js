@@ -23,11 +23,11 @@ var exports = exports || undefined;
     var that         = this;
     var controls     = options.controls || {};
 
-    this.source.on('dbclick', 'option', function () {
+    this.source.on('dblclick', 'option', function () {
       that.select(this);
     });
 
-    this.destination.on('dbclick', 'option', function () {
+    this.destination.on('dblclick', 'option', function () {
       that.unselect(this);
     });
 

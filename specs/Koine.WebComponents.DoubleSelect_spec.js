@@ -145,18 +145,18 @@ describe("Koine.WebComponents.DoubleSelect", function () {
     });
   });
 
-  describe("source option dbclick", function () {
+  describe("source option dblclick", function () {
     it("selects that option", function () {
-      $(opt2.getElement()).trigger('dbclick');
+      $(opt2.getElement()).trigger('dblclick');
 
       expect(subject.getOptions().length).toEqual(3);
       expect(subject.getSelected().length).toEqual(3);
     });
   });
 
-  describe("destination option dbclick", function () {
+  describe("destination option dblclick", function () {
     it("unselects that option", function () {
-      $(opt5.getElement()).trigger('dbclick');
+      $(opt5.getElement()).trigger('dblclick');
 
       expect(subject.getOptions().length).toEqual(5);
       expect(subject.getSelected().length).toEqual(1);
