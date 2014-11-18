@@ -46,6 +46,28 @@ var exports = exports || undefined;
         });
       });
     }
+
+    // button to add selected source options
+    if (controls.addSelected) {
+      controls.addSelected.on('click', function (e) {
+        e.preventDefault();
+
+        that.getSourceSelected().forEach(function (option) {
+          that.select(option);
+        });
+      });
+    }
+
+    // button to remove selected source options
+    if (controls.removeSelected) {
+      controls.removeSelected.on('click', function (e) {
+        e.preventDefault();
+
+        that.getDestinationSelected().forEach(function (option) {
+          that.unselect(option);
+        });
+      });
+    }
   };
 
   var SelectDecorator = Koine.Decorators.Dom.SelectDecorator;

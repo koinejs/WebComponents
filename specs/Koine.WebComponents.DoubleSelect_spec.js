@@ -180,4 +180,27 @@ describe("Koine.WebComponents.DoubleSelect", function () {
       expect(subject.getSelected().length).toEqual(0);
     });
   });
+
+  describe("click on 'addSelected' controller", function () {
+    it("selects only the selected source options", function () {
+      opt2.select();
+      opt4.select();
+
+      $(addSelected).trigger('click');
+
+      expect(subject.getOptions().length).toEqual(2);
+      expect(subject.getSelected().length).toEqual(4);
+    });
+  });
+
+  describe("click on 'removeSelected' controller", function () {
+    it("unselects only the selected destination options", function () {
+      opt5.select();
+
+      $(removeSelected).trigger('click');
+
+      expect(subject.getOptions().length).toEqual(5);
+      expect(subject.getSelected().length).toEqual(1);
+    });
+  });
 });
