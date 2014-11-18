@@ -10,19 +10,42 @@ var exports = exports || undefined;
    * @param function the jquery function
    *  fancy select must be rendered
    */
-  var DoubleSelect = function ($source, $destination, $) {
-    this.source      = $source;
-    this.destination = $destination;
-    this.$           = $;
-    var that = this;
+  var DoubleSelect = function (options) {
+    this.source      = options.source;
+    this.destination = options.destination;
+    this.$           = options.jquery || jQuery;
+    var that         = this;
+    var controls     = options.controls || {};
 
-    $source.on('dbclick', 'option', function () {
+    this.source.on('dbclick', 'option', function () {
       that.select(this);
     });
 
-    $destination.on('dbclick', 'option', function () {
+    this.destination.on('dbclick', 'option', function () {
       that.unselect(this);
     });
+
+    // button to select all
+    if (controls.addAll) {
+      controls.addAll.on('click', function (e) {
+        e.preventDefault();
+
+        that.getOptions().forEach(function (option) {
+          that.select(option);
+        });
+      });
+    }
+
+    // button to unslelect all
+    if (controls.removeAll) {
+      controls.removeAll.on('click', function (e) {
+        e.preventDefault();
+
+        that.getSelected().forEach(function (option) {
+          that.unselect(option);
+        });
+      });
+    }
   };
 
   var SelectDecorator = Koine.Decorators.Dom.SelectDecorator;
@@ -85,7 +108,7 @@ var exports = exports || undefined;
     _getSelectOptions: function (element) {
       var options = [];
 
-      element.find('option').each(function (option) {
+      element.find('option').each(function (index, option) {
         options.push(option);
       });
 

@@ -16,19 +16,36 @@ describe("Koine.WebComponents.DoubleSelect", function () {
   });
 
   beforeEach(function () {
+    addAll         = document.createElement('a');
+    removeAll      = document.createElement('a');
+    addSelected    = document.createElement('a');
+    removeSelected = document.createElement('a');
+
     source       = document.createElement('select');
     source.setAttribute('multiple', 'multiple');
     destination  = document.createElement('select');
     destination.setAttribute('multiple', 'multiple');
     $source      = $(source);
     $destination = $(destination);
-    subject      = new Koine.WebComponents.DoubleSelect($source, $destination, jQuery);
-    opt1         = createOption('1', 'one');
-    opt2         = createOption('2', 'two');
-    opt3         = createOption('3', 'three');
-    opt4         = createOption('4', 'four');
-    opt5         = createOption('5', 'five');
-    opt6         = createOption('6', 'six');
+
+    subject = new Koine.WebComponents.DoubleSelect({
+      source: $source,
+      destination: $destination,
+      jquery: jQuery,
+      controls: {
+        addAll:          $(addAll),
+        removeAll:       $(removeAll),
+        addSelected:     $(addSelected),
+        removeSelected:  $(removeSelected)
+      }
+    });
+
+    opt1 = createOption('1', 'one');
+    opt2 = createOption('2', 'two');
+    opt3 = createOption('3', 'three');
+    opt4 = createOption('4', 'four');
+    opt5 = createOption('5', 'five');
+    opt6 = createOption('6', 'six');
 
     $source.append(opt1.getElement());
     $source.append(opt2.getElement());
@@ -53,6 +70,7 @@ describe("Koine.WebComponents.DoubleSelect", function () {
   describe("#getOptions", function () {
     it("returns the source options", function () {
       expect(subject.getOptions().length).toEqual(4);
+      expect(subject.getOptions()[0]).toBe(opt1.getElement());
     });
   });
 
@@ -142,6 +160,24 @@ describe("Koine.WebComponents.DoubleSelect", function () {
 
       expect(subject.getOptions().length).toEqual(5);
       expect(subject.getSelected().length).toEqual(1);
+    });
+  });
+
+  describe("click on 'addAll' controller", function () {
+    it("selects all the options", function () {
+      $(addAll).trigger('click');
+
+      expect(subject.getOptions().length).toEqual(0);
+      expect(subject.getSelected().length).toEqual(6);
+    });
+  });
+
+  describe("click on 'remove' controller", function () {
+    it("selects all the options", function () {
+      $(removeAll).trigger('click');
+
+      expect(subject.getOptions().length).toEqual(6);
+      expect(subject.getSelected().length).toEqual(0);
     });
   });
 });
