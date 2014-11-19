@@ -82,15 +82,17 @@ describe("Koine.WebComponents.DoubleSelect", function () {
 
   describe("#setOptions", function () {
     it("replaces the source options", function () {
-      subject.setOptions([opt1, opt2]);
+      subject.setOptions([opt1.getElement(), opt2.getElement()]);
       expect(subject.getOptions().length).toEqual(2);
+      expect(subject.getOptions()[0]).toBe(opt1.getElement());
     });
   });
 
   describe("#setSelected", function () {
     it("replaces the target options", function () {
-      subject.setSelected([opt1]);
+      subject.setSelected([opt1.getElement()]);
       expect(subject.getSelected().length).toEqual(1);
+      expect(subject.getSelected()[0]).toBe(opt1.getElement());
     });
   });
 

@@ -76,8 +76,6 @@ var exports = exports || undefined;
     }
   };
 
-  var SelectDecorator = Koine.Decorators.Dom.SelectDecorator;
-
   DoubleSelect.prototype = {
 
     /**
@@ -127,8 +125,11 @@ var exports = exports || undefined;
     },
 
     _setSelectOptions: function (select, options) {
-      select = new SelectDecorator(select.html('')[0]);
-      select.addOptions(options);
+      select = select.html('')[0];
+
+      options.forEach(function (option) {
+        select.appendChild(option);
+      });
 
       return this;
     },
